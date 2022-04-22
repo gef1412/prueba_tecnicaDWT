@@ -17,7 +17,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    @livewireStyles
 </head>
 <body>
     <div id="app">
@@ -58,6 +59,12 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ url('mail') }}">
+                                        {{ __('Inbox') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ url('movielist') }}">
+                                        {{ __('Busqueda Peliculas') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -79,5 +86,7 @@
             @yield('content')
         </main>
     </div>
+    @yield('scripts')
+    @livewireScripts
 </body>
 </html>

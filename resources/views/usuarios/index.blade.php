@@ -15,9 +15,11 @@
             <th>Nombre</th>
             <th>Apellidos</th>
             <th>Email</th>
+            <th>Telefono</th>
             <th>DNI</th>
             <th>Fecha Nacimiento</th>
             <th>Edad</th>
+            <th>Ciudad</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -28,9 +30,11 @@
             <td>{{ $usuario->nombre }}</td>
             <td>{{ $usuario->apellidos }}</td>
             <td>{{ $usuario->email }}</td>
+            <td>{{ $usuario->telefono }}</td>
             <td>{{ $usuario->dni }}</td>
             <td>{{ $usuario->fecha_nacimiento }}</td>
             <td>{{ \Carbon\Carbon::parse($usuario->fecha_nacimiento)->age; }}</td>
+            <td>{{ $usuario->ciudad }}</td>
             <td>
                 <form action="{{ url('/usuarios/'.$usuario->id.'/edit') }}" method="get">
                     @csrf

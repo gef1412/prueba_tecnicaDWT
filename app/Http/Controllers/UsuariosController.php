@@ -21,6 +21,7 @@ class UsuariosController extends Controller
         ->orwhere('apellidos', 'LIKE','%'.$filtro.'%')
         ->orwhere('email', 'LIKE','%'.$filtro.'%')
         ->orwhere('dni', 'LIKE','%'.$filtro.'%')
+        ->orwhere('telefono', 'LIKE','%'.$filtro.'%')
         ->latest('id')
         ->paginate(10);
 
@@ -58,14 +59,17 @@ class UsuariosController extends Controller
             'apellidos'=> 'required | max:100',
             'email'=> 'required | email | max:100',
             'password'=> 'string | min:8',
+            'telefono'=> 'digits:11 | min:8',
             'dni'=> 'required | digits:11',
             'fecha_nacimiento'=> 'date',
+            'ciudad' => 'string',
         ];
 
         $error = [
             'required' => ':attribute es un campo obligatorio',
             'string' => 'El formato de :attribute es incorrecto ',
             'date' => ':attribute debe ser una fecha valida',
+            'digits' => 'El numero excede el maximo de digitos',
         ];
 
         $this->validate($request, $validacion, $error);
@@ -75,6 +79,8 @@ class UsuariosController extends Controller
 
            // return response()->json($userdata);
            return redirect('usuarios');
+
+           //Mail::to($request->userdata())->send(new Inbox());
     }
 
     /**
@@ -116,14 +122,17 @@ class UsuariosController extends Controller
             'apellidos'=> 'required | max:100',
             'email'=> 'required | email | max:100',
             'password'=> 'string | min:8',
+            'telefono'=> 'digits:11 | min:8',
             'dni'=> 'required | digits:11',
             'fecha_nacimiento'=> 'date',
+            'ciudad' => 'string',
         ];
 
         $error = [
             'required' => ':attribute es un campo obligatorio',
             'string' => 'El formato de :attribute es incorrecto ',
             'date' => ':attribute debe ser una fecha valida',
+            'digits' => 'El numero excede el maximo de digitos',
         ];
 
         $this->validate($request, $validacion, $error);

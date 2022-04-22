@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UsuariosController;
+use App\Mail\Inbox;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,15 +25,27 @@ Route::get('/', function () {
 
 Route::resource('usuarios', UsuariosController::class);
 
+/*Route::get('Ciudad', [\App\Http\Controllers\CiudadController::class, 'index'])
+    ->name('Ciudad.index');
+
+Route::get('Estado', [\App\Http\Controllers\EstadoController::class, 'index'])
+    ->name('Estado.index');*/
 
 Auth::routes([ 'reset'=>false]);
 
 Route::get('/home', [UsuariosController::class, 'index'])->name('home');
 
+Route::get('/mail', function(){
+    //Mail::to($request->usuario())->send(new Inbox());
+    return new Inbox(); 
+});
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [UsuariosController::class, 'index'])->name('home');
 });
 
-
+Route::get('/movielist', function () {
+    return view('movielist.movielist');
+});
 
 

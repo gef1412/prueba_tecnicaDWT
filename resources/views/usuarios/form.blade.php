@@ -21,13 +21,19 @@
 <label for="apellidos"> Apellidos </label>
 <input type="text" name="apellidos" value="{{  isset($datos_edit->apellidos)?$datos_edit->apellidos :old('apellidos') }}" id="apellidos">
 <br>
+<label for="telefono"> Telefono </label>
+<input type="text" name="telefono" value="{{  isset($datos_edit->telefono)?$datos_edit->telefono :old('telefono') }}" id="telefono">
+<br>
 <label for="dni"> DNI </label>
 <input type="text" name="dni" value="{{  isset($datos_edit->dni)?$datos_edit->dni :old('dni') }}" id="dni">
 <br>
 <label for="fecha_nacimiento"> Fecha de nacimiento </label>
 <input type="date" name="fecha_nacimiento" value="{{  isset($datos_edit->fecha_nacimiento)?$datos_edit->fecha_nacimiento :old('fecha_nacimiento') }}" id="fecha">
 <br>
+@livewire('dropdown-ciudad', ['selectCiudad' => 1])
+<br>
 <input type="submit" value="Registrar">
+
 
 <a href="{{ url('/usuarios') }}">
     <button>Regresar</button>

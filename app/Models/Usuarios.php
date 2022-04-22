@@ -17,7 +17,13 @@ class Usuarios extends Authenticatable
         'apellidos',
         'email',
         'password',
+        'telefono',
         'dni',
-        'fecha_nacimiento'
+        'fecha_nacimiento',
+        'ciudad'
+    ];
+
+    protected $hidden = [
+        'password',
     ];
 }
